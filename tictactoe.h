@@ -12,5 +12,7 @@
 
 int legal_position(char table[3][3], int position_i, int position_j);
 void bot(char table[3][3],char piece);
+void pro_bot(char table[3][3], char piece);
 void move(char table[3][3], int position_i, int position_j, char piece);
 int check_win(char table[3][3], char p);
+int is_full(char table[3][3]);

@@ -64,10 +64,10 @@ int main() {
     char table[3][3];
     while(1) {
         clear_board(table);
-        printf(CYAN "\n=== NEW GAME ===" RESET "\nSelect mode:\n1) VS bot\n2) VS your friend\n");
+        printf(CYAN "\n=== NEW GAME ===" RESET "\nSelect mode:\n1) VS Normal Bot\n2) VS Pro Bot (Invincible)\n3) VS Friend\n");
         int mode;
-        while(scanf("%d", &mode) != 1 || (mode != 1 && mode != 2)) {
-            printf(RED "Invalid input. Enter 1 or 2: " RESET);
+        while(scanf("%d", &mode) != 1 || (mode < 1 || mode > 3)) {
+            printf(RED "Invalid input. Enter 1, 2 or 3: " RESET);
             while(getchar() != '\n');
         }
         while(getchar() != '\n');
@@ -89,7 +89,7 @@ int main() {
         int game_running = 1;
         while (game_running) {
             print_board(table);
-            if (mode == 1) {
+            if (mode == 1 || mode == 2) {
                 if (current_player == my_piece) {
                     printf("Your turn (%c) - Enter move (e.g. A 1): ", current_player);
                     char c_char;
@@ -106,7 +106,11 @@ int main() {
                         continue;
                     }
                 } else {
-                    bot(table, bot_piece);
+                    if (mode == 1) {
+                        bot(table, bot_piece); 
+                    } else if (mode == 2) {
+                        pro_bot(table, bot_piece); 
+                    }
                 }
             }
             
