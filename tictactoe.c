@@ -150,5 +150,6 @@ int main() {
         while(getchar() != '\n');
         if (choice == 0) break;
     }
+    printf(CYAN"Goodbye! Thanks for playing :)\n"RESET);
     return 0;
 }
